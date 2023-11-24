@@ -1,12 +1,15 @@
 import React from 'react'
 import style from './../../styles/element/templateForm.module.css'
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { connectToken } from '../../reducers/user'
 
 function TemplateForm(props) {
   const [firstName, setFirstName] = useState('')
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
+
+  const dispatch = useDispatch()
 
   const handleSubmit = () => {
     const formdata = {
@@ -17,11 +20,12 @@ function TemplateForm(props) {
     fetch('http://localhost:3000/users/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ formdata })
+      body: JSON.stringify(formdata)
     })
       .then(response => response.json())
       .then((data) => {
         if (!data.result) {
+          console.log('oulah', data)
           return
         } else {
           dispatch(connectToken(data.token))
@@ -38,7 +42,7 @@ function TemplateForm(props) {
       <div><input className={style.inputStyle} type="text" value={firstName} placeholder="FirstName" onChange={(e) => setFirstName(e.target.value)} /> </div>
       <div><input className={style.inputStyle} type="text" value={userName} placeholder="UserName" onChange={(e) => setUserName(e.target.value)} /> </div>
       <div><input className={style.inputStyle} type="password" value={password} placeholder="password" onChange={(e) => setPassword(e.target.value)} /> </div>
-      <button className={style.validate} onClick={() => handleSubmit('signup')}> Sign up </button>
+      <button className={style.validate} onClick={() => handleSubmit()}> Sign up </button>
     </div>
   )
 }

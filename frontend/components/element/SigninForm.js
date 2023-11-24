@@ -10,8 +10,7 @@ function SigninForm(props) {
 
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
-  const user = useSelector((state) => state.User);
-  console.log(user)
+
   const handleSubmit = () => {
     // const router = useRouter();
     const formdata = {
@@ -43,7 +42,7 @@ function SigninForm(props) {
         <h2>Connect to Hackatweet</h2>
         <div><input className={style.inputStyle} type="text" value={userName} placeholder="UserName" onChange={(e) => setUserName(e.target.value)} /> </div>
         <div><input className={style.inputStyle} type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)} /> </div>
-        <button className={style.validate} onClick={() => handleSubmit('signin')}> Sign in </button>
+        <button className={style.validate} onClick={() => handleSubmit()}> Sign in </button>
       </div>
     </div>
   );
