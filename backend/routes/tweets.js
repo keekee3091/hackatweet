@@ -23,6 +23,8 @@ router.post('/post', (req, res) => {
     const datePosted = moment().startOf('hours').fromNow();
 
     const newTweet = new Tweet({
+        username: req.body.username,
+        firstname: req.body.firstname,
         tweet: tweetContent,
         date: datePosted,
         hashtag: hashtags,

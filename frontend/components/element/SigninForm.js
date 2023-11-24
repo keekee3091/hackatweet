@@ -1,23 +1,48 @@
 import React from "react";
 import style from "./../../styles/element/templateForm.module.css";
 import { useState } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-function SigninForm(props) {
-  const userToken = useSelector()
-  console.log()
+import { useSelector, useDispatch } from 'react-redux'
 
-    const [userName, setUserName] = useState('')
-    const [password, setPassword] = useState('')
+
+function SigninForm(props) {
+  const dispatch = useDispatch()
+  const [userName, setUserName] = useState('')
+  const [password, setPassword] = useState('')
+  const user = useSelector((state) => state.User);
+  const handleSubmit = () => {
+    // const router = useRouter();
+    const formdata = {
+      username: userName,
+      password: password,
+    };
+    fetch('http://localhost:3000/users/signin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ formdata })
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (!data.result) {
+          console.log(data)
+          console.log('nop')
+          return
+        } else {
+          dispatch(connectToken())
+          console.log(user)
+        }
+      })
+  }
+  // el_retardo123
   return (
     <div>
       <div className={style.template}>
         <button className={style.drop} onClick={props.change} >X</button>
         <h2>Connect to Hackatweet</h2>
-        <div><input className={style.inputStyle} type="text" value={userName} placeholder="UserName" onChange={(e)=>setUserName(e.target.value)} /> </div>
-        <div><input className={style.inputStyle} type="password" value={password} placeholder="Password" onChange={(e)=>setPassword(e.target.value)} /> </div>
-        <button className={style.validate}> Sign in </button>
-    </div>
+        <div><input className={style.inputStyle} type="text" value={userName} placeholder="UserName" onChange={(e) => setUserName(e.target.value)} /> </div>
+        <div><input className={style.inputStyle} type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)} /> </div>
+        <button className={style.validate} onClick={() => handleSubmit('signin')}> Sign in </button>
       </div>
+    </div>
   );
 }
 
