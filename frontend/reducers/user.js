@@ -8,11 +8,14 @@ export const User = createSlice({
 	name: 'User',
 	initialState,
 	reducers: {
-		exemple(state, action){
-           
-        }
+		connectToken(state, action) {
+			state.token = action.payload
+		},
+		deleteToken(state, action) {
+			state.token = null
+		}
 	},
 });
 
-export const { exemple } = User.actions;
+export const { connectToken, deleteToken } = User.actions;
 export default User.reducer;

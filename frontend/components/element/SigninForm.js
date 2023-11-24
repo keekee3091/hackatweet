@@ -2,9 +2,10 @@ import React from "react";
 import style from "./../../styles/element/templateForm.module.css";
 import { useState } from "react";
 import Link from "next/link"
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux'
 function SigninForm(props) {
+
   const dispatch = useDispatch()
 
   const [userName, setUserName] = useState('')
@@ -12,7 +13,7 @@ function SigninForm(props) {
   const user = useSelector((state) => state.User);
   console.log(user)
   const handleSubmit = () => {
-    const router = useRouter();
+    // const router = useRouter();
     const formdata = {
       username: userName,
       password: password,
@@ -27,8 +28,10 @@ function SigninForm(props) {
         if (!data.result) {
           return
         } else {
-          dispatch()
-          router.push('/');
+          dispatch(connectToken(data.token))
+          console.log(data)
+          // router.push('/');
+          window.location.href = 'http://localhost:3001/'
         }
       })
   }
