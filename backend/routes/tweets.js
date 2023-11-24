@@ -36,6 +36,13 @@ router.post('/post', (req, res) => {
         })
 });
 
+router.get('/', (req, res) => {
+    Tweet.find()
+        .then((tweetData) => {
+            res.json({ result: true, tweetData })
+        })
+})
+
 router.delete('/delete', (req, res) => {
     Tweet.deleteOne({ _id: req.body.tweetId })
         .then(() => {
