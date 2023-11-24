@@ -1,0 +1,54 @@
+.template{
+    position: absolute;
+    z-index: 100;
+    border-radius: 10px;
+    height: 50vh;
+    width: 30%;
+    background-color: rgb(106, 106, 106);
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -70%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.drop{
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    right: 0px; 
+    top: 0px; 
+    transition: .3s;
+    background-color: transparent;
+    color: antiquewhite;
+}
+.drop:hover{
+    background-color: white;
+    color: black
+}
+
+.inputStyle{
+    border: rgb(179, 179, 179) solid 1px;
+    background-color: transparent;
+    color: rgb(179, 179, 179);
+    padding: 10px 30px;
+    margin-top: 10px;
+}
+.validate{
+    padding: 10px 90px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    border-radius: 20px;
+    margin-top: 10px;
+    border: none;
+}

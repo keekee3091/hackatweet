@@ -1,0 +1,25 @@
+.HashtagSection{
+    width: 30%;
+    border: solid white 1px;
+    background-color: rgb(13, 13, 67);
+    height: 100vh;
+    position: relative;
+}
+
+.HashtagSection h3{position: absolute;
+  top: -20px;
+  left: 10px;
+  padding: 0;
+  color: white;
+}
+
+.hashContainer{
+    background-color: rgb(21, 21, 105);
+    width: 80%;
+    border-radius: 10px;
+    overflow: hidden;
+    height: auto;
+    margin-left: 50px;
+    margin-top: 50px;
+    color: white;
+}

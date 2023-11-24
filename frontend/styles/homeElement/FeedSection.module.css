@@ -1,0 +1,6 @@
+.FeedSection{
+    width: 50%;
+    border: none;
+    height: 100vh;
+    overflow-y: scroll;
+}

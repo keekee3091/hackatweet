@@ -1,0 +1,8 @@
+.hashtag{
+    padding: 5px 10px ;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.hashtag:hover{
+    background-color: rgb(18, 18, 113);
+}

@@ -1,0 +1,7 @@
+.standard{
+    border-radius: 20px;
+    width: 150px;
+    padding: 10px 30px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
