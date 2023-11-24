@@ -12,7 +12,7 @@ router.post('/signup', (req, res) => {
     res.json({ result: false, error: 'Missing or empty fields' });
     return;
   }
-
+   
   // Check if the user has not already been registered
   User.findOne({
     firstname: req.body.firstname,
@@ -44,7 +44,7 @@ router.post('/signin', (req, res) => {
     res.json({ result: false, error: 'Missing or empty fields' });
     return;
   }
-
+  
   User.findOne({ username: req.body.username }).then(data => {
     if (data && bcrypt.compareSync(req.body.password, data.password)) {
       res.json({ result: true, token: data.token });

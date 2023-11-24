@@ -1,15 +1,17 @@
 import React from "react";
 import style from "./../../styles/element/templateForm.module.css";
 import { useState } from "react";
-import Link from "next/link"
-// import { useRouter } from 'next/router';
+import { connectToken } from './../../reducers/user'
 import { useSelector, useDispatch } from 'react-redux'
+
+
 function SigninForm(props) {
 
   const dispatch = useDispatch()
-
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
+
+  const user = useSelector((state) => state.User);
 
   const handleSubmit = () => {
     // const router = useRouter();
@@ -17,24 +19,28 @@ function SigninForm(props) {
       username: userName,
       password: password,
     };
+
     fetch('http://localhost:3000/users/signin', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ formdata })
+      body: JSON.stringify(formdata)
     })
       .then((response) => response.json())
       .then((data) => {
         if (!data.result) {
+          console.log(data)
+          console.log('nop')
           return
         } else {
+          console.log(user)
+          console.log('ok')
           dispatch(connectToken(data.token))
-          console.log(data)
-          // router.push('/');
+          // revoir le redirect next
           window.location.href = 'http://localhost:3001/'
         }
       })
   }
-
+  // el_retardo123
   return (
     <div>
       <div className={style.template}>
