@@ -6,15 +6,14 @@ import  Style from './../../styles/homeElement/post.module.css'
     <div className={Style.PostContainer}>
             <div className={Style.info}>
                 <div className={Style.image}></div>&nbsp;
-                <p>{props.name}</p>&nbsp;
-                <p>{props.userName}</p>
+                <p>{props.fistname}</p>&nbsp;
+                <p>{props.username}</p>
             </div>
             <div className={Style.content}>
-               <p>{props.content}</p>
+               <p>{props.tweet}</p>
             </div>
             <div className={Style.likes}>
-                <p>{props.likes}</p>
-
+                <p>100</p>
             </div>
     </div>
   )

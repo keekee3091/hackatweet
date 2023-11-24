@@ -17,6 +17,7 @@ function TemplateForm(props) {
       username: userName,
       password: password,
     };
+    
     fetch('http://localhost:3000/users/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -29,7 +30,6 @@ function TemplateForm(props) {
           return
         } else {
           dispatch(connectToken(data.token))
-          // router.push('/');
           window.location.href = 'http://localhost:3001/'
         }
       })

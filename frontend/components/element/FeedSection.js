@@ -2,8 +2,12 @@ import React from 'react'
 import Style from './../../styles/homeElement/FeedSection.module.css'
 import Poster from './../element/Poster'
 import Post from './../element/Post'
+import { useSelector } from 'react-redux'
 
  function FeedSection() {
+
+const tweets = useSelector((state)=> state.Tweets.allTweets)
+
   const data = [
     {
        name: "johny sins",
@@ -19,7 +23,7 @@ import Post from './../element/Post'
     }
   ]
 
-const posts = data.map((post)=>{
+const posts = tweets.map((post)=>{
        return <Post {...post}/>
 })
 
