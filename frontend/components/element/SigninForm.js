@@ -1,7 +1,10 @@
 import React from "react";
 import style from "./../../styles/element/templateForm.module.css";
 import { useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 function SigninForm(props) {
+  const userToken = useSelector()
+  console.log()
 
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')

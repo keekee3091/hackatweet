@@ -9,10 +9,10 @@ export const tweetTricks = createSlice({
 	initialState,
 	reducers: {
 		deleteTweet(state, action){
-           
+           state.allTweets.filter((tweet)=>tweet.action.payload)
         },
 		addTweet(state, action){
-           
+           state.allTweets.push(action.payload)
         },
 	},
 });
