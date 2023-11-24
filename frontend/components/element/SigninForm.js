@@ -3,11 +3,14 @@ import style from "./../../styles/element/templateForm.module.css";
 import { useState } from "react";
 import Link from "next/link"
 import { useRouter } from 'next/router';
+import { useSelector, useDispatch } from 'react-redux'
 function SigninForm(props) {
+  const dispatch = useDispatch()
 
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
-
+  const user = useSelector((state) => state.User);
+  console.log(user)
   const handleSubmit = () => {
     const router = useRouter();
     const formdata = {
@@ -24,6 +27,7 @@ function SigninForm(props) {
         if (!data.result) {
           return
         } else {
+          dispatch()
           router.push('/');
         }
       })
