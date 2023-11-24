@@ -26,6 +26,7 @@ router.post('/post', (req, res) => {
         username: req.body.username,
         firstname: req.body.firstname,
         tweet: tweetContent,
+        like: 0,
         date: datePosted,
         hashtag: hashtags,
     });
