@@ -1,11 +1,11 @@
 import React from 'react'
 import Style from './../../styles/homeElement/hashtag.module.css'
- function HashItem(props) {
-        console.log(props)
+function HashItem(props) {
+
   return (
     <div className={Style.hashtag}>
-          <h4>#{props.content}</h4>
-         <p>{props.numberOfTweets}</p> 
+      <h4>#{props.content}</h4>
+      <p>{props.numberOfTweets}</p>
     </div>
   )
 }

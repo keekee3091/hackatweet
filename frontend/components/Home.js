@@ -18,14 +18,13 @@ function Home() {
       .then((data) => {
         // console.log(data.tweetData)
         dispatch(initTweets(data.tweetData))
-        console.log(tweets)
       });
 
     fetch(`http://localhost:3000/users/${user.token}`)
       .then(response => response.json())
       .then((data) => {
         if (data.result) {
-          dispatch(connectProfile(data.firstname, data.username))
+          dispatch(connectProfile({ firstname: data.firstname, username: data.username }))
           console.log(user)
         } else {
           console.log('Nope')

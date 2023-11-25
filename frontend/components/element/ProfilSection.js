@@ -1,11 +1,9 @@
 import React from 'react'
 import Style from './../../styles/homeElement/ProfilSection.module.css'
-import { connectProfile } from '../../reducers/user'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 
 function ProfilSection() {
-  const dispatch = useDispatch()
   const user = useSelector((state) => state.User)
   console.log(user)
 
@@ -14,8 +12,9 @@ function ProfilSection() {
       <div className={Style.profilItem}>
         <div className={Style.pic}></div>
         <div className={Style.content}>
-          <h3 className={Style.name}>john</h3>
-          <p className={Style.userName}>@johnCena</p>
+          <h3 className={Style.name}> {user.firstname} </h3>
+          <p className={Style.userName}> {user.username} </p>
+
         </div>
       </div>
     </div>
