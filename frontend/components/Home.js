@@ -5,26 +5,45 @@ import HashtagSection from './../components/element/HashtagSection'
 import { useEffect, useState } from 'react';
 import { initTweets } from '../reducers/tweets';
 import { useSelector, useDispatch } from 'react-redux'
+import { connectProfile } from '../reducers/user';
 
 function Home() {
-    const dispatch = useDispatch()
-    const tweets = useSelector((state)=> state.Tweets.allTweets)
+  const dispatch = useDispatch()
+  const tweets = useSelector((state) => state.Tweets.allTweets)
+  const user = useSelector((state) => state.User)
 
-    useEffect(()=>{
-       fetch('http://localhost:3000/tweets')
-       .then(response => response.json())
-       .then((data)=>{
-          // console.log(data.tweetData)
-          dispatch(initTweets(data.tweetData))
-          console.log(tweets)
-       })
-    }, [])
+  useEffect(() => {
+    fetch('http://localhost:3000/tweets')
+      .then(response => response.json())
+      .then((data) => {
+        // console.log(data.tweetData)
+        dispatch(initTweets(data.tweetData))
+        console.log(tweets)
+      });
+
+    fetch(`http://localhost:3000/users/${user.token}`)
+      .then(response => response.json())
+      .then((data) => {
+        if (data.result) {
+          dispatch(connectProfile(data.firstname, data.username))
+          console.log(user)
+        } else {
+          console.log('Nope')
+          return
+        }
+      });
+
+  }, [])
+
+  // useEffect(() => {
+
+  // }, [])
   return (
     <div>
       <main className={styles.main}>
-        <ProfilSection/>
+        <ProfilSection />
         <FeedSection />
-        <HashtagSection/>
+        <HashtagSection />
       </main>
     </div>
   );
